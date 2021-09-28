@@ -6,65 +6,74 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyBean {
-        "first": string;
-        "forth": string;
-        "opt": string[];
-        "second": string;
-        "third": string;
-    }
-    interface MyDropdown {
-        "first": string;
-        "forth": string;
+    interface DropButton {
         "name": string;
-        "second": string;
-        "third": string;
+    }
+    interface DropdownContent {
+        "bg": string;
+        "color": string;
+        "name": string;
+    }
+    interface MyBean {
+        "bg": string;
+        "color": string;
+        "height": string;
+        "name": string;
     }
 }
 declare global {
+    interface HTMLDropButtonElement extends Components.DropButton, HTMLStencilElement {
+    }
+    var HTMLDropButtonElement: {
+        prototype: HTMLDropButtonElement;
+        new (): HTMLDropButtonElement;
+    };
+    interface HTMLDropdownContentElement extends Components.DropdownContent, HTMLStencilElement {
+    }
+    var HTMLDropdownContentElement: {
+        prototype: HTMLDropdownContentElement;
+        new (): HTMLDropdownContentElement;
+    };
     interface HTMLMyBeanElement extends Components.MyBean, HTMLStencilElement {
     }
     var HTMLMyBeanElement: {
         prototype: HTMLMyBeanElement;
         new (): HTMLMyBeanElement;
     };
-    interface HTMLMyDropdownElement extends Components.MyDropdown, HTMLStencilElement {
-    }
-    var HTMLMyDropdownElement: {
-        prototype: HTMLMyDropdownElement;
-        new (): HTMLMyDropdownElement;
-    };
     interface HTMLElementTagNameMap {
+        "drop-button": HTMLDropButtonElement;
+        "dropdown-content": HTMLDropdownContentElement;
         "my-bean": HTMLMyBeanElement;
-        "my-dropdown": HTMLMyDropdownElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyBean {
-        "first"?: string;
-        "forth"?: string;
-        "opt"?: string[];
-        "second"?: string;
-        "third"?: string;
-    }
-    interface MyDropdown {
-        "first"?: string;
-        "forth"?: string;
+    interface DropButton {
         "name"?: string;
-        "second"?: string;
-        "third"?: string;
+    }
+    interface DropdownContent {
+        "bg"?: string;
+        "color"?: string;
+        "name"?: string;
+    }
+    interface MyBean {
+        "bg"?: string;
+        "color"?: string;
+        "height"?: string;
+        "name"?: string;
     }
     interface IntrinsicElements {
+        "drop-button": DropButton;
+        "dropdown-content": DropdownContent;
         "my-bean": MyBean;
-        "my-dropdown": MyDropdown;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "drop-button": LocalJSX.DropButton & JSXBase.HTMLAttributes<HTMLDropButtonElement>;
+            "dropdown-content": LocalJSX.DropdownContent & JSXBase.HTMLAttributes<HTMLDropdownContentElement>;
             "my-bean": LocalJSX.MyBean & JSXBase.HTMLAttributes<HTMLMyBeanElement>;
-            "my-dropdown": LocalJSX.MyDropdown & JSXBase.HTMLAttributes<HTMLMyDropdownElement>;
         }
     }
 }

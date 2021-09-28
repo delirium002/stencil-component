@@ -8,32 +8,16 @@
 }
 
 .dropdown {
-  transition: 5ms;
   position: relative;
   display: inline-block;
 }
 
 .dropdown-content {
-  transition: 5ms;
-
   display: none;
   position: absolute;
-  min-width: 160px;
+  min-width: 150px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-}
-
-.dropdown-content option {
-  color: black;
-  background-color: #f9f8f9;
-  font-family: 'Poppins', sans-serif;
-  padding: 12px 25px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content option:hover {
-  color: #0645ad;
 }
 
 .dropdown:hover .dropdown-content {
