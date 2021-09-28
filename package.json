@@ -22,6 +22,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
+    "@saasquatch/stencil-hooks": "^2.0.2",
     "@stencil/core": "^2.7.0"
   },
   "devDependencies": {

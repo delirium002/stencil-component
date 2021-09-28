@@ -5,12 +5,12 @@ describe('my-bean', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [MyBean],
-      html: `<my-bean></my-bean>`,
+      html: `<my-bean><button><span>x</span></button></my-bean>`,
     });
     expect(page.root).toEqualHtml(`
       <my-bean>
         <mock:shadow-root>
-          <span>x</span>
+        <button><span>x</span></button>
         </mock:shadow-root>
       </my-bean>
     `);

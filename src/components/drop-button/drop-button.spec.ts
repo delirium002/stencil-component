@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { DropButton } from './drop-button';
+import { DropDownSelect } from './dropdown-select';
 
 describe('drop-button', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
-      components: [DropButton],
+      components: [DropDownSelect],
       html: '<drop-button></drop-button>',
     });
     expect(root).toEqualHtml(`
@@ -18,7 +18,7 @@ describe('drop-button', () => {
 
   it('renders with values', async () => {
     const { root } = await newSpecPage({
-      components: [DropButton],
+      components: [DropDownSelect],
       html: `<drop-button title="Stencil"></drop-button>`,
     });
     expect(root).toEqualHtml(`
