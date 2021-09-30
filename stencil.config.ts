@@ -1,7 +1,10 @@
 import { Config } from '@stencil/core';
 
+const esModules = ['haunted', 'lit-html', 'lib', '@saasquatch'].join('|');
+
 export const config: Config = {
   namespace: 'test',
+  globalStyle: 'src/global/global.css',
   outputTargets: [
     {
       type: 'dist',
@@ -18,4 +21,10 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
+  testing: {
+    transform: {
+      '^.+\\.(ts|tsx|js|jsx|css)$': '<rootDir>/node_modules/@stencil/core/testing/jest-preprocessor.js',
+    },
+    transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
+  },
 };

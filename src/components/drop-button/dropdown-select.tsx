@@ -32,8 +32,10 @@ export class DropDownSelect {
     const [beanOptions, setBeanOptions] = useState([]);
 
     const selectWord = name => {
-      beanOptions.push(name);
-      setBeanOptions(beanOptions);
+      if (!beanOptions.includes(name)) {
+        beanOptions.push(name);
+        setBeanOptions(beanOptions);
+      }
     };
 
     const removeWord = name => {
@@ -47,16 +49,18 @@ export class DropDownSelect {
     return (
       <div>
         <div class="dropdown">
-          <button class="dropbtn">{this.name} &#8595;</button>
+          <button class="dropbtn">
+            {this.name} <img class="caretIcon" src="https://img.icons8.com/ios-glyphs/15/000000/sort-down.png" />
+          </button>
           <div class="dropdown-content">
-            {this._options.map(e => (
+            {this._options?.map(e => (
               <span onClick={() => selectWord(e.text)}>{e.text}</span>
             ))}
           </div>
         </div>
 
-        <div style={{ display: 'flex' }}>
-          {beanOptions.map(e => (
+        <div class="bean">
+          {beanOptions?.map(e => (
             <button class="btn">
               {e}{' '}
               <span class="cross" onClick={() => removeWord(e)}>

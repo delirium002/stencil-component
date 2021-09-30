@@ -6,76 +6,36 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface DropdownContent {
-        "bg": string;
-        "color": string;
-        "name": string;
-    }
     interface DropdownSelect {
         "name": string;
         "options": string;
     }
-    interface MyBean {
-        "bg": string;
-        "color": string;
-        "height": string;
-        "name": string;
-    }
 }
 declare global {
-    interface HTMLDropdownContentElement extends Components.DropdownContent, HTMLStencilElement {
-    }
-    var HTMLDropdownContentElement: {
-        prototype: HTMLDropdownContentElement;
-        new (): HTMLDropdownContentElement;
-    };
     interface HTMLDropdownSelectElement extends Components.DropdownSelect, HTMLStencilElement {
     }
     var HTMLDropdownSelectElement: {
         prototype: HTMLDropdownSelectElement;
         new (): HTMLDropdownSelectElement;
     };
-    interface HTMLMyBeanElement extends Components.MyBean, HTMLStencilElement {
-    }
-    var HTMLMyBeanElement: {
-        prototype: HTMLMyBeanElement;
-        new (): HTMLMyBeanElement;
-    };
     interface HTMLElementTagNameMap {
-        "dropdown-content": HTMLDropdownContentElement;
         "dropdown-select": HTMLDropdownSelectElement;
-        "my-bean": HTMLMyBeanElement;
     }
 }
 declare namespace LocalJSX {
-    interface DropdownContent {
-        "bg"?: string;
-        "color"?: string;
-        "name"?: string;
-    }
     interface DropdownSelect {
         "name"?: string;
         "options"?: string;
     }
-    interface MyBean {
-        "bg"?: string;
-        "color"?: string;
-        "height"?: string;
-        "name"?: string;
-    }
     interface IntrinsicElements {
-        "dropdown-content": DropdownContent;
         "dropdown-select": DropdownSelect;
-        "my-bean": MyBean;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "dropdown-content": LocalJSX.DropdownContent & JSXBase.HTMLAttributes<HTMLDropdownContentElement>;
             "dropdown-select": LocalJSX.DropdownSelect & JSXBase.HTMLAttributes<HTMLDropdownSelectElement>;
-            "my-bean": LocalJSX.MyBean & JSXBase.HTMLAttributes<HTMLMyBeanElement>;
         }
     }
 }

@@ -1,10 +1,14 @@
 .dropbtn {
   padding: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: inherit;
   font-weight: 500;
   font-size: 16px;
   background-color: transparent;
   border: none;
+}
+
+.caretIcon {
+  margin-left: 8px;
 }
 
 .dropdown {
@@ -14,30 +18,35 @@
 
 .dropdown-content {
   display: none;
-  background: #f9f8f9;
-  // position: absolute;
+  background: var(--primary-00);
   min-width: 150px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .dropdown-content span {
-  font-family: 'Poppins', sans-serif;
+  font-family: inherit;
   padding: 12px 25px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content span:hover {
-  color: #0645ad;
+  color: var(--border);
+  font-family: sans-serif;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+  font-family: sans-serif;
 }
 
 .dropdown:hover .dropbtn {
-  border-top: 4px solid #004d6e;
+  border-top: 4px solid var(--border);
+}
+
+.bean {
+  display: flex;
 }
 
 .btn {
@@ -45,14 +54,16 @@
   margin: 0 5px;
   min-height: 30px;
   outline: none;
-  border: 1px solid darkgray;
+  border: none;
+  color: var(--white);
+  background: var(--border);
   border-radius: 5px;
 }
 
 .cross {
   padding: 1px 5px;
-  color: red;
-  border: 1px dashed red;
+  color: var(--white);
+  border: 1px dashed var(--white);
   border-radius: 50%;
   cursor: pointer;
 }

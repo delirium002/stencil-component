@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
     <title>Stencil Component Dropdown</title>
+    <link rel="stylesheet" href="/build/test.css" />
     <script type="module" src="/build/test.esm.js"></script>
     <script nomodule src="/build/test.js"></script>
   </head>
   <body>
-    <dropdown-select name="COVID 19" options='[{"text":"Tesla"}, {"text":"Volkswagon"}, {"text":"Mercedes"}, {"text":"Honda"}, {"text":"Porche"}]'></dropdown-select>
+    <div class="container">
+      <div class="row">
+        <dropdown-select name="COVID 19" options='[{"text":"Tesla"}, {"text":"Volkswagon"}, {"text":"Mercedes"}, {"text":"Honda"}, {"text":"Porche"}]'></dropdown-select>
+      </div>
+    </div>
   </body>
 </html>
