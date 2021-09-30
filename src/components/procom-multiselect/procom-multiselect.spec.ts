@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { DropDownSelect } from './dropdown-select';
+import { ProcomMultiSelect } from './procom-multiselect';
 
 describe('drop-button', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
-      components: [DropDownSelect],
+      components: [ProcomMultiSelect],
       html: `
        <drop-button>
          <mock>
@@ -39,7 +39,7 @@ describe('drop-button', () => {
 
   it('renders with values', async () => {
     const { root } = await newSpecPage({
-      components: [DropDownSelect],
+      components: [ProcomMultiSelect],
       html: `<drop-button title="Stencil" options='[{"text":"Value"}]'>
       <mock>
         <div>

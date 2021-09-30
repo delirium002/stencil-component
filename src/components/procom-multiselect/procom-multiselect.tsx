@@ -2,18 +2,17 @@ import { Component, Prop, State, h } from '@stencil/core';
 import { withHooks, useState } from '@saasquatch/stencil-hooks';
 
 @Component({
-  tag: 'dropdown-select',
-  styleUrl: 'dropdown-select.scss',
+  tag: 'procom-multiselect',
+  styleUrl: 'procom-multiselect.scss',
   shadow: true,
 })
-export class DropDownSelect {
+export class ProcomMultiSelect {
   constructor() {
     withHooks(this);
   }
 
   @Prop() name: string;
   @Prop() options: string;
-
   @State() _options: Array<any>;
 
   arrayDataWatcher(options) {
@@ -62,7 +61,7 @@ export class DropDownSelect {
         <div class="bean">
           {beanOptions?.map(e => (
             <button class="btn">
-              {e}{' '}
+              {e}
               <span class="cross" onClick={() => removeWord(e)}>
                 x
               </span>

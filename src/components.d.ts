@@ -6,36 +6,36 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface DropdownSelect {
+    interface ProcomMultiselect {
         "name": string;
         "options": string;
     }
 }
 declare global {
-    interface HTMLDropdownSelectElement extends Components.DropdownSelect, HTMLStencilElement {
+    interface HTMLProcomMultiselectElement extends Components.ProcomMultiselect, HTMLStencilElement {
     }
-    var HTMLDropdownSelectElement: {
-        prototype: HTMLDropdownSelectElement;
-        new (): HTMLDropdownSelectElement;
+    var HTMLProcomMultiselectElement: {
+        prototype: HTMLProcomMultiselectElement;
+        new (): HTMLProcomMultiselectElement;
     };
     interface HTMLElementTagNameMap {
-        "dropdown-select": HTMLDropdownSelectElement;
+        "procom-multiselect": HTMLProcomMultiselectElement;
     }
 }
 declare namespace LocalJSX {
-    interface DropdownSelect {
+    interface ProcomMultiselect {
         "name"?: string;
         "options"?: string;
     }
     interface IntrinsicElements {
-        "dropdown-select": DropdownSelect;
+        "procom-multiselect": ProcomMultiselect;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "dropdown-select": LocalJSX.DropdownSelect & JSXBase.HTMLAttributes<HTMLDropdownSelectElement>;
+            "procom-multiselect": LocalJSX.ProcomMultiselect & JSXBase.HTMLAttributes<HTMLProcomMultiselectElement>;
         }
     }
 }
