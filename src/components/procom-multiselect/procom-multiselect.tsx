@@ -1,5 +1,5 @@
 import { Component, Prop, State, h } from '@stencil/core';
-import { withHooks, useState } from '@saasquatch/stencil-hooks';
+// import { withHooks, useState } from '@saasquatch/stencil-hooks';
 
 @Component({
   tag: 'procom-multiselect',
@@ -7,10 +7,6 @@ import { withHooks, useState } from '@saasquatch/stencil-hooks';
   shadow: true,
 })
 export class ProcomMultiSelect {
-  constructor() {
-    withHooks(this);
-  }
-
   @Prop() name: string;
   @Prop() options: string;
   @State() _options: Array<any>;
@@ -27,23 +23,22 @@ export class ProcomMultiSelect {
     this.arrayDataWatcher(this.options);
   }
 
+  @State() optList: string[] = [];
+
+  addItem(name: string) {
+    if (!this.optList.includes(name)) {
+      this.optList = [...this.optList, name];
+    }
+  }
+
+  removeItem(name: string) {
+    this.optList = this.optList.filter(ele => {
+      return ele != name;
+    });
+  }
+
   render() {
-    const [beanOptions, setBeanOptions] = useState([]);
-
-    const selectWord = name => {
-      if (!beanOptions.includes(name)) {
-        beanOptions.push(name);
-        setBeanOptions(beanOptions);
-      }
-    };
-
-    const removeWord = name => {
-      beanOptions.splice(
-        beanOptions.findIndex(e => e === name),
-        1,
-      );
-      setBeanOptions(beanOptions);
-    };
+    console.log(this.optList);
 
     return (
       <div>
@@ -52,18 +47,16 @@ export class ProcomMultiSelect {
             {this.name} <img class="caretIcon" src="https://img.icons8.com/ios-glyphs/15/000000/sort-down.png" />
           </button>
           <div class="dropdown-content">
-            {' '}
             {this._options?.map(e => (
-              <span onClick={() => selectWord(e.text)}>{e.text}</span>
-            ))}{' '}
+              <span onClick={() => this.addItem(e.text)}>{e.text}</span>
+            ))}
           </div>
         </div>
-
         <div class="bean">
-          {beanOptions?.map(e => (
+          {this.optList?.map(e => (
             <button class="btn">
               {e}
-              <span class="cross" onClick={() => removeWord(e)}>
+              <span class="cross" onClick={() => this.removeItem(e)}>
                 x
               </span>
             </button>
@@ -77,3 +70,18 @@ export class ProcomMultiSelect {
     // required for `useEffect` cleanups to run
   }
 }
+
+// const [beanOptions, setBeanOptions] = useState([]);
+// const selectWord = name => {
+//   if (!beanOptions.includes(name)) {
+//     beanOptions.push(name);
+//     setBeanOptions(beanOptions);
+//   }
+// };
+// const removeWord = name => {
+// beanOptions.splice(
+//   beanOptions.findIndex(e => e === name),
+//   1,
+// );
+// setBeanOptions(beanOptions);
+// };

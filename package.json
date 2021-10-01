@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "@saasquatch/stencil-hooks": "^2.0.2",
-    "@stencil/core": "^2.7.0"
+    "@stencil/core": "^2.7.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "write-file-webpack-plugin": "^4.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

@@ -9,6 +9,6 @@ export default {
   // },
 };
 
-// export const Default = () => `
-//   <procom-multiselect name="COVID 19" options='[{"text":"Tesla"}]'></procom-multiselect>
-// `;
+export const Default = () => `
+  <procom-multiselect name="COVID 19" options='[{"text":"Tesla"}]'></procom-multiselect>
+`;
