@@ -19,16 +19,28 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@saasquatch/stencil-hooks": "^2.0.2",
     "@stencil/core": "^2.7.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.9",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/addon-notes": "^5.3.21",
+    "@storybook/addon-viewport": "^6.3.9",
+    "@storybook/html": "^6.3.8",
     "@types/jest": "^26.0.24",
+    "babel-loader": "^8.2.2",
+    "case": "^1.6.3",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
+    "npm-run-all": "^4.1.5",
     "puppeteer": "^10.0.0"
   },
   "license": "MIT"

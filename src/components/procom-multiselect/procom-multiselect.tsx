@@ -52,9 +52,10 @@ export class ProcomMultiSelect {
             {this.name} <img class="caretIcon" src="https://img.icons8.com/ios-glyphs/15/000000/sort-down.png" />
           </button>
           <div class="dropdown-content">
+            {' '}
             {this._options?.map(e => (
               <span onClick={() => selectWord(e.text)}>{e.text}</span>
-            ))}
+            ))}{' '}
           </div>
         </div>
 

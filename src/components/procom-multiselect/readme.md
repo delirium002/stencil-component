@@ -4,12 +4,10 @@
 
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first item  | `string` | `undefined` |
-| `second` | `second`  | The second item | `string` | `undefined` |
-| `third`  | `third`   | The third item  | `string` | `undefined` |
-| `forth`  | `forth`   | The forth item  | `string` | `undefined` |
+| Property  | Attribute | Description   | Type     | Default     |
+| --------- | --------- | ------------- | -------- | ----------- |
+| `name`    | `name`    | this is title | `string` | `undefined` |
+| `options` | `options` | thats option  | `string` | `undefined` |
 
 ---
 
