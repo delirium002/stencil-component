@@ -20,11 +20,11 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook.run": "start-storybook -p 6006 -s dist",
+    "storybook": "npm-run-all --parallel build storybook.run",
+    "build-storybook": "build-storybook -c ./.storybook -o ../public"
   },
   "dependencies": {
-    "@saasquatch/stencil-hooks": "^2.0.2",
     "@stencil/core": "^2.7.0",
     "copy-webpack-plugin": "^9.0.1",
     "write-file-webpack-plugin": "^4.5.1"

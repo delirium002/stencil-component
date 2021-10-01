@@ -1,59 +1,33 @@
-const fs = require('fs');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const WriteFilePlugin = require('write-file-webpack-plugin');
-
-const OUTPUT_DIR = '../dist/types';
-// Stencil names the project entry the same as the project
-// Look for the file `dist/<your-project-name>.js` to find out what to insert here
-const PROJECT_NAME = 'test';
 
 module.exports = {
-  stories: ['../src/**/*.stories.js'],
-  addons: ['@storybook/addon-notes/register'],
-  // Custom webpack config to tell Storybook where to find the compiled files from Stencil
-  async webpackFinal(config) {
-    config.entry.push(path.join(__dirname, OUTPUT_DIR, `${PROJECT_NAME}.js`));
-    fs.readdirSync(path.join(__dirname, OUTPUT_DIR, 'components/procom-multiselect')).map(file => {
-      jsFilePath = path.join(__dirname, OUTPUT_DIR, `components/${file}/${file}.ts`);
-      try {
-        if (fs.existsSync(jsFilePath)) {
-          config.entry.push(jsFilePath);
-        }
-      } catch (err) {
-        console.error(err);
-      }
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-viewport', '@storybook/addon-notes'],
+  webpackFinal: async (config, { configType }) => {
+    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
+    // You can change the configuration based on that.
+    // 'PRODUCTION' is used when building the static version of storybook.
 
-      // Add CSS
-      // let cssFilePath = path.join(__dirname, OUTPUT_DIR, `components/${file}/${file}.css`);
-      // try {
-      //   if (fs.existsSync(cssFilePath)) {
-      //     config.entry.push(cssFilePath);
-      //   }
-      // } catch (err) {
-      //   console.error(err);
-      // }
+    config.devServer = {
+      watchContentBase: true,
+      contentBase: path.join(__dirname, 'src'),
+      historyApiFallback: true,
+    };
+
+    config.module.rules[0].use[0].options.sourceType = 'unambiguous';
+
+    config.module.rules.push({
+      test: /.\.stories\.tsx$/,
+      exclude: /(src)/,
+      use: 'raw-loader',
     });
+    config.resolve.extensions.push('.stories.tsx');
 
-    // Add all static files to Storybook
-    config.plugins.push(
-      new CopyPlugin([
-        {
-          from: '**/*',
-          to: './',
-          context: 'dist',
-        },
-      ]),
-    );
+    config.resolve.alias = {
+      '@src': path.resolve(__dirname, '../dist/collection'),
+    };
 
-    // Write the files to disk and not to memory
-    config.plugins.push(new WriteFilePlugin());
-
+    // Return the altered config
     return config;
   },
 };
-
-// module.exports = {
-//   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-//   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
-// };

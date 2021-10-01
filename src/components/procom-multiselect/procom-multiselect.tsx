@@ -1,9 +1,8 @@
 import { Component, Prop, State, h } from '@stencil/core';
-// import { withHooks, useState } from '@saasquatch/stencil-hooks';
 
 @Component({
   tag: 'procom-multiselect',
-  styleUrl: 'procom-multiselect.scss',
+  styleUrl: 'procom-multiselect.css',
   shadow: true,
 })
 export class ProcomMultiSelect {
@@ -32,14 +31,12 @@ export class ProcomMultiSelect {
   }
 
   removeItem(name: string) {
-    this.optList = this.optList.filter(ele => {
+    this.optList = this.optList?.filter(ele => {
       return ele != name;
     });
   }
 
   render() {
-    console.log(this.optList);
-
     return (
       <div>
         <div class="dropdown">
