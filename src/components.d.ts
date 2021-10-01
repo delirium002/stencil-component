@@ -7,8 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface ProcomMultiselect {
-        "name": string;
+        "defaultPressed": boolean;
         "options": string;
+        "pressedText": string;
+        "unpressedText": string;
     }
 }
 declare global {
@@ -24,8 +26,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface ProcomMultiselect {
-        "name"?: string;
+        "defaultPressed"?: boolean;
         "options"?: string;
+        "pressedText"?: string;
+        "unpressedText"?: string;
     }
     interface IntrinsicElements {
         "procom-multiselect": ProcomMultiselect;
