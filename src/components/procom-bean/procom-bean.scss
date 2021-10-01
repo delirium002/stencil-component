@@ -1,0 +1,17 @@
+.procom-bean {
+  display: flex;
+  background-color: var(--procom-blue);
+  padding:20px;
+  margin:20px;
+}
+
+.procom-bean .name{
+    margin-right:10px;
+    padding-top:10px;
+}
+
+.procom-bean .close-bean{
+  background-color: red;
+  padding: 10px;
+  cursor: pointer;
+}
