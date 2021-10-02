@@ -1,15 +1,10 @@
-import { createHeader } from './Header';
+import { Header } from './Header';
 
 export default {
   title: 'Example/Header',
-  argTypes: {
-    onLogin: { action: 'onLogin' },
-    onLogout: { action: 'onLogout' },
-    onCreateAccount: { action: 'onCreateAccount' },
-  },
 };
 
-const Template = (args) => createHeader(args);
+const Template = (args) => Header(args);
 
 export const LoggedIn = Template.bind({});
 LoggedIn.args = {
