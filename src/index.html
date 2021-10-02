@@ -13,9 +13,15 @@
     <div class="container">
       <div class="row">
         <procom-multiselect 
-          default-pressed='fasle'
           name="COVID 19"
-          options='[{"text":"Tesla"}, {"text":"Volkswagon"}, {"text":"Mercedes"}, {"text":"Honda"}, {"text":"Porche"}]'
+          variation='flat'
+          options='[
+              {"text":"Tesla", "isSelected":"false"}, 
+              {"text":"Volkswagon", "isSelected":"false"},  
+              {"text":"Mercedes", "isSelected":"false"},  
+              {"text":"Honda", "isSelected":"false"},  
+              {"text":"Porche", "isSelected":"false"}
+            ]'
         ></procom-multiselect>
       </div>
     </div>

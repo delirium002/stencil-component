@@ -7,14 +7,14 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface ProcomBean {
+        "itemId": number;
         "name": string;
+        "variation": string;
     }
     interface ProcomMultiselect {
-        "defaultPressed": boolean;
         "name": string;
         "options": string;
-        "pressedText": string;
-        "unpressedText": string;
+        "variation": string;
     }
 }
 declare global {
@@ -37,16 +37,16 @@ declare global {
 }
 declare namespace LocalJSX {
     interface ProcomBean {
+        "itemId"?: number;
         "name"?: string;
         "onRemoveBean"?: (event: CustomEvent<any>) => void;
+        "variation"?: string;
     }
     interface ProcomMultiselect {
-        "defaultPressed"?: boolean;
         "name"?: string;
         "onClickedDropdownItem"?: (event: CustomEvent<any>) => void;
         "options"?: string;
-        "pressedText"?: string;
-        "unpressedText"?: string;
+        "variation"?: string;
     }
     interface IntrinsicElements {
         "procom-bean": ProcomBean;

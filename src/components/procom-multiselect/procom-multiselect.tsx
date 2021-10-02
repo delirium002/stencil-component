@@ -7,15 +7,11 @@ import { Component, Prop, State, Event,EventEmitter, h, Listen } from '@stencil/
 })
 export class ProcomMultiSelect {
   @Prop() name: string;
-  @Prop() defaultPressed: boolean = false;
-  @Prop() pressedText: string = "ON";
-  @Prop() unpressedText: string = "OFF";
   @Prop() options: string;
-
-  @State() pressed: boolean = this.defaultPressed;
+  @Prop() variation: string;
+  @State() pressed: boolean = false;
   @State() _options: Array<any>;
   @State() clickedItem: string = '';
-  @State() selected: Array<any> = [];
   @Event() clickedDropdownItem: EventEmitter<any>;
 
   arrayDataWatcher(options) {
@@ -29,36 +25,34 @@ export class ProcomMultiSelect {
   componentWillLoad() {
     this.arrayDataWatcher(this.options);
   }
-  handleOnClick(e) {
-    e.preventDefault();
-    console.log('clicked button')
-  };
 
   handleDropdownItemClick(e) {
     e.preventDefault();
-    this.clickedItem = e.target.innerHTML
-    console.log('clicked dropdown', this.selected);
-    this.clickedDropdownItem.emit(this.clickedItem);
+    this.clickedItem = e.target.innerHTML;
+    const itemId = e.target.getAttribute('attr-id');
+    const itemName = e.target.innerHTML;
+    const isActive = e.target.getAttribute('attr-selected');
+    isActive == 'false' && this.clickedDropdownItem.emit({itemId, itemName});
   };
 
   @Listen('clickedDropdownItem', {target:'body'})
-  onClickedDropdownItemHandler(event:CustomEvent<string>){
-    console.log('DD Clicked', event);
-    this.selected.push(event.detail);
+  onClickedDropdownItemHandler(event:CustomEvent<any>){
+    const {itemId, itemName} = event.detail;
+    this._options[itemId].isSelected = 'true';
+    this.pressed = !this.pressed;
+    console.log('DD Clicked', itemId, itemName, this._options);
   }
 
   @Listen('removeBean', {target:'body'})
   onRemoveBean(event:CustomEvent<string>){
     console.log('Remove Bean Clicked', event.detail);
-    //this.selected.push(event.detail);
-    let arr = this.selected;
-    arr = arr.filter(e => e !== event.detail);
-    this.selected = arr;
+    const itemId = event.detail;
+    this._options[itemId].isSelected = 'false';
+    this.pressed = !this.pressed;
   }
 
-
   render() {
-    console.log(this.options);
+    console.log('options', this._options)
     const handleDropdownItemClick = (e) => this.handleDropdownItemClick(e);
     
     return (
@@ -68,16 +62,22 @@ export class ProcomMultiSelect {
             Click Here 
           </button>
           <div class="dropdown-content">
-            {' '}
-            {this._options?.map(e => (
-              <span onClick={handleDropdownItemClick}>{e.text}</span>
-            ))}{' '}
+            {this._options?.map((e, index) => (
+              <span 
+                class={e.isSelected == 'true' ? 'active' : 'inactive'}
+                attr-id={index}
+                attr-selected={e.isSelected}
+                onClick={handleDropdownItemClick}
+              >
+                {e.text}
+              </span>
+            ))}
           </div>
         </div>
         <div class='bean-list'>
-          {this.selected.map((e) => (
-            <procom-bean name={e}/>
-          ))}
+          {this._options.map((e, index) => {
+            if(e.isSelected == 'true') return(<procom-bean variation={this.variation} name={e.text} itemId={index} />)
+          })}
         </div>
       </div>
     );

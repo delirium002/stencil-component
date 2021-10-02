@@ -4,7 +4,7 @@
   font-weight: 500;
   font-size: 16px;
   background-color: transparent;
-  border: none;
+  border: 1px solid var(--procom-blue);
 }
 
 .caretIcon {
@@ -29,11 +29,21 @@
   padding: 12px 25px;
   text-decoration: none;
   display: block;
+  cursor: pointer;
 }
+.dropdown-content span.active {
+  color: var(--border);
+  font-family: sans-serif;
+  background-color: rgb(229, 229, 253);
+  font-weight: bold;
+}
+
 
 .dropdown-content span:hover {
   color: var(--border);
   font-family: sans-serif;
+  background-color: rgb(229, 229, 253);
+  font-weight: bold;
 }
 
 .dropdown:hover .dropdown-content {
