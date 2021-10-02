@@ -1,8 +1,8 @@
 import readme from './readme.md';
 import { withDesign } from 'storybook-addon-designs';
-import { h } from '@stencil/core';
+// import { h } from '@stencil/core';
 
-import { ProcomMultiSelect } from './procom-multiselect';
+// import { ProcomMultiSelect } from './procom-multiselect';
 
 export default {
   title: 'Procom multiselect',
