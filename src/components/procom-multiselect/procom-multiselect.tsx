@@ -57,6 +57,11 @@ export class ProcomMultiSelect {
     
     return (
       <div>
+         <div class='bean-list'>
+          {this._options.map((e, index) => {
+            if(e.isSelected == 'true') return(<procom-bean variation={this.variation} name={e.text} itemId={index} />)
+          })}
+        </div>
         <div class="dropdown">
           <button class="dropbtn">
             Click Here 
@@ -74,11 +79,7 @@ export class ProcomMultiSelect {
             ))}
           </div>
         </div>
-        <div class='bean-list'>
-          {this._options.map((e, index) => {
-            if(e.isSelected == 'true') return(<procom-bean variation={this.variation} name={e.text} itemId={index} />)
-          })}
-        </div>
+       
       </div>
     );
   }
