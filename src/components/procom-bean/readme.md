@@ -1,4 +1,6 @@
-# my-component
+# procom-bean
+
+
 
 <!-- Auto Generated Below -->
 
@@ -7,29 +9,29 @@
 
 | Property    | Attribute   | Description | Type     | Default     |
 | ----------- | ----------- | ----------- | -------- | ----------- |
+| `itemId`    | `item-id`   |             | `number` | `undefined` |
 | `name`      | `name`      |             | `string` | `undefined` |
-| `options`   | `options`   |             | `string` | `undefined` |
 | `variation` | `variation` |             | `string` | `undefined` |
 
 
 ## Events
 
-| Event                 | Description | Type               |
-| --------------------- | ----------- | ------------------ |
-| `clickedDropdownItem` |             | `CustomEvent<any>` |
+| Event        | Description | Type               |
+| ------------ | ----------- | ------------------ |
+| `removeBean` |             | `CustomEvent<any>` |
 
 
 ## Dependencies
 
-### Depends on
+### Used by
 
-- [procom-bean](../procom-bean)
+ - [procom-multiselect](../procom-multiselect)
 
 ### Graph
 ```mermaid
 graph TD;
   procom-multiselect --> procom-bean
-  style procom-multiselect fill:#f9f,stroke:#333,stroke-width:4px
+  style procom-bean fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

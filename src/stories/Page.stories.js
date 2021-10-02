@@ -1,19 +1,15 @@
-import { createPage } from './Page';
+import { Page } from './Page';
 import * as HeaderStories from './Header.stories';
 
 export default {
   title: 'Example/Page',
-  argTypes: {
-    onLogin: { action: 'onLogin' },
-    onLogout: { action: 'onLogout' },
-    onCreateAccount: { action: 'onCreateAccount' },
-  },
 };
 
-const Template = (args) => createPage(args);
+const Template = (args) => Page(args);
 
 export const LoggedIn = Template.bind({});
 LoggedIn.args = {
+  // More on composing args: https://storybook.js.org/docs/web-components/writing-stories/args#args-composition
   ...HeaderStories.LoggedIn.args,
 };
 
