@@ -1,27 +1,35 @@
 .procom-bean {
- display: inline-block;
- background-color: var(--procom-blue);
- padding:20px 10px 20px 20px;
- margin:20px 20px 20px 0;
- color: var(--white);
-}
-
-.procom-bean .name{
+  display: inline-block;
+  background-color: #007abd;
+  padding: 15px 0px 15px 12px;
+  margin: 3px 20px 20px 0;
+  color: white;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  border: 1px solid #007abd;
+  .name{
     margin-right:10px;
     padding-top:10px;
-}
-
-.procom-bean .close-bean{
-  background-color: var(--mono-70);
-  padding: 10px;
-  cursor: pointer;
-}
-
-.procom-bean.rounded{
-  border-radius: 40px;
-}
-
-.procom-bean.rounded .close-bean{
-  border-radius: 40px;
-  padding: 10px 16px;
+  }
+  .close-bean{
+    padding: 15px 12px;
+    cursor: pointer;
+    border-left: 1px solid #004c75;
+    transition: all 0.2s;
+    &:hover{
+      background-color:#004c75;      
+      transition: all 0.2s;
+    }
+  }
+  &.light{
+    background-color: white;
+    color:#004c75;
+    .close-bean{
+      border-left: 1px solid #007abd;
+      &:hover{
+        background-color: rgb(215, 204, 255);
+      }
+    }
+  }
 }

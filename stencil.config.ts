@@ -1,10 +1,13 @@
 import { Config } from '@stencil/core';
-
+import { sass } from '@stencil/sass';
 const esModules = ['haunted', 'lit-html', 'lib', '@saasquatch'].join('|');
 
 export const config: Config = {
   namespace: 'test',
   globalStyle: 'src/global/global.css',
+  plugins: [
+    sass()
+  ],
   outputTargets: [
     {
       type: 'dist',

@@ -15,11 +15,11 @@ describe('procom-multiselect', () => {
     await page.setContent('<procom-multiselect></procom-multiselect>');
     const component = await page.find('procom-multiselect');
     const element = await page.find('procom-multiselect >>> button');
-    expect(element.textContent).toEqual(` `);
+    expect(element.textContent).toEqual(`Procom Multi-select `);
 
-    component.setProperty('name', 'James');
+    component.setProperty('name', 'Coffee');
     await page.waitForChanges();
-    expect(element.textContent).toEqual(`James `);
+    expect(element.textContent).toEqual(`Coffee `);
 
     component.setProperty('name', 'Quincy');
     await page.waitForChanges();

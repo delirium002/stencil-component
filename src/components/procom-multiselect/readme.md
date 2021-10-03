@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type     | Default     |
-| ----------- | ----------- | ----------- | -------- | ----------- |
-| `name`      | `name`      |             | `string` | `undefined` |
-| `options`   | `options`   |             | `string` | `undefined` |
-| `variation` | `variation` |             | `string` | `undefined` |
+| Property    | Attribute   | Description | Type                | Default                                                                                                                                                                                                                                 |
+| ----------- | ----------- | ----------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`      | `name`      |             | `string`            | `"Procom Multi-select"`                                                                                                                                                                                                                 |
+| `options`   | `options`   |             | `string`            | ``[     {"text":"Coffee", "isSelected":"false"},     {"text":"Bagels", "isSelected":"false"},     {"text":"Toast", "isSelected":"false"},     {"text":"Eggs", "isSelected":"false"},     {"text":"Avocado", "isSelected":"false"}   ]`` |
+| `variation` | `variation` |             | `"dark" \| "light"` | `"dark"`                                                                                                                                                                                                                                |
 
 
 ## Events

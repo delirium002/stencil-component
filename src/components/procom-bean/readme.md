@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type     | Default     |
-| ----------- | ----------- | ----------- | -------- | ----------- |
-| `itemId`    | `item-id`   |             | `number` | `undefined` |
-| `name`      | `name`      |             | `string` | `undefined` |
-| `variation` | `variation` |             | `string` | `undefined` |
+| Property    | Attribute   | Description | Type                | Default         |
+| ----------- | ----------- | ----------- | ------------------- | --------------- |
+| `itemId`    | `item-id`   |             | `number`            | `undefined`     |
+| `name`      | `name`      |             | `string`            | `"Procom Bean"` |
+| `variation` | `variation` |             | `"dark" \| "light"` | `"dark"`        |
 
 
 ## Events
