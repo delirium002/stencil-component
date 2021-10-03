@@ -46,19 +46,16 @@ export class ProcomMultiSelect {
     const { itemId, itemName } = event.detail;
     this._options[itemId].isSelected = 'true';
     this.pressed = !this.pressed;
-    // console.log('DD Clicked', itemId, itemName, this._options);
   }
 
   @Listen('removeBean', { target: 'body' })
   onRemoveBean(event: CustomEvent<string>) {
-    // console.log('Remove Bean Clicked', event.detail);
     const itemId = event.detail;
     this._options[itemId].isSelected = 'false';
     this.pressed = !this.pressed;
   }
 
   render() {
-    // console.log('options', this._options);
     const handleDropdownItemClick = e => this.handleDropdownItemClick(e);
     return (
       <div class="procom-container">
