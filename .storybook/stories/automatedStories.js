@@ -1,6 +1,7 @@
 import path from 'path';
 import Case from 'case';
 import { storiesOf } from '@storybook/html';
+import {withDesign} from 'storybook-addon-designs';
 
 /**
  * Given a property (from stencil Component.properties) and an optional
@@ -13,6 +14,7 @@ function getControlForProp(prop, controlOptions) {
     defaultValue: defaultVal,
     control: { type: 'text' },
   };
+
 
   // control options have to be defined using camelCase
   const propCamel = Case.camel(prop.attribute);
@@ -184,18 +186,18 @@ function createNodes(el, elements) {
  *     }
  *   }
  */
-function createStencilStory({ Component, notes, states, args = {}, argTypes = {} }, stories) {
+function createStencilStory({ Component, notes, parameters, states, args = {}, argTypes = {} }, stories) {
   // It is important that the main container element
   // is NOT created inside of the render function below!!
   const mainEl = document.createElement('div');
   const controls = getPropsWithControlValues(Component, { args, argTypes });
-  const storyOpts = notes ? { notes, args: controls.args, argTypes: controls.argTypes } : { args: controls.args, argTypes: controls.argTypes };
+  const storyOpts = notes ? { parameters, notes, args: controls.args, argTypes: controls.argTypes } : { args: controls.args, argTypes: controls.argTypes };
   const tag = Component.is;
-
+  console.log('meesaaa', storyOpts)
   // Clone the "states" array and add the default state first
   states = states && states.length ? states.slice(0) : [];
   states.unshift({
-    title: 'Default state (use Controls below to edit props):',
+    title: 'Procom Components Library',
     tag: Component.is,
     props: {},
     children: [{ tag: 'span', innerText: 'Default' }],
@@ -307,7 +309,7 @@ function buildGeneratorConfigs(componentsCtx, storiesCtx) {
           [Component.name]: _export,
         });
       }
-
+      console.log('Export', _export)
       return Object.assign(obj, {
         [Component.name]: {
           Component,
@@ -315,6 +317,8 @@ function buildGeneratorConfigs(componentsCtx, storiesCtx) {
           args: _export.args,
           argTypes: _export.argTypes,
           notes: cleanNotes(_export.notes),
+          decorators: _export.decorators,
+          parameters: _export.parameters
         },
       });
     }
@@ -335,7 +339,7 @@ function buildStencilStories(name, componentsCtx, storiesCtx) {
   const configs = buildGeneratorConfigs(componentsCtx, storiesCtx);
 
   const stories = storiesOf(name, module);
-
+  console.log('Configs', configs)
   Object.keys(configs)
     .map(comp => configs[comp])
     .forEach(config =>

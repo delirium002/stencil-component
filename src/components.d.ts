@@ -8,13 +8,13 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface ProcomBean {
         "itemId": number;
-        "name": string;
-        "variation": string;
+        "name"?: string;
+        "variation"?: "light" | "dark";
     }
     interface ProcomMultiselect {
         "name": string;
         "options": string;
-        "variation": string;
+        "variation"?: "light" | "dark";
     }
 }
 declare global {
@@ -40,13 +40,13 @@ declare namespace LocalJSX {
         "itemId"?: number;
         "name"?: string;
         "onRemoveBean"?: (event: CustomEvent<any>) => void;
-        "variation"?: string;
+        "variation"?: "light" | "dark";
     }
     interface ProcomMultiselect {
         "name"?: string;
         "onClickedDropdownItem"?: (event: CustomEvent<any>) => void;
         "options"?: string;
-        "variation"?: string;
+        "variation"?: "light" | "dark";
     }
     interface IntrinsicElements {
         "procom-bean": ProcomBean;

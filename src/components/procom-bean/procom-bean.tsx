@@ -6,9 +6,9 @@ import { Component, Prop, Event,EventEmitter, h } from '@stencil/core';
   shadow: true,
 })
 export class ProcomBean {
-  @Prop() name: string;
+  @Prop() name?: string = "Procom Bean";
   @Prop() itemId: number;
-  @Prop() variation: string;
+  @Prop() variation? : "light" | "dark" = "dark";
   @Event() removeBean: EventEmitter<any>;
 
   handleClose(e) {
@@ -16,7 +16,6 @@ export class ProcomBean {
     console.log('clicked close', this.itemId);
     this.removeBean.emit(this.itemId);
   };
-
 
   render() {
     const handleClose = (e) => this.handleClose(e);
